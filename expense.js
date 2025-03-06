@@ -111,9 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
         editExpenseModal.show();
     }
 
-    // Make these functions available globally, but in a safer way
-    // window.deleteExpense = deleteExpense;
-    // window.editExpense = editExpense;
 
     // Save Edited Expense
     editExpenseForm.addEventListener("submit", function (e) {
