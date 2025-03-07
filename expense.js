@@ -134,6 +134,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    function filterExpenses() {
+        const filterCategory = document.getElementById("filterCategory").value;
+        const expenseList = document.getElementById("expenseList");
+        expenseList.innerHTML = "";
+        
+        expenses.filter(expense => !filterCategory || expense.category === filterCategory).forEach(expense => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${expense.name}</td>
+                <td>$${expense.amount.toFixed(2)}</td>
+                <td>${expense.date}</td>
+                <td>${expense.category}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="deleteExpense(${expense.id})">Delete</button></td>
+            `;
+            expenseList.appendChild(row);
+        });
+    }
+
 
     // Filtering and Sorting
 document.getElementById("sortBy").addEventListener("change", function () {
@@ -148,6 +166,44 @@ document.getElementById("sortBy").addEventListener("change", function () {
         expenses.sort((a, b) => b.amount - a.amount);
     }
     saveExpenses(); 
-    updateExpenseList();
+    updateExpenseList();   
+});
+
+
+// Create a bar chart
+const ctx = document.getElementById('expenseChart').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: expenses.map(expense => expense.name),
+        datasets: [{
+            label: 'Expenses',
+            data: expenses.map(expense => expense.amount),
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
 });
 });
