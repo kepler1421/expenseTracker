@@ -21,7 +21,11 @@
 
                         <!-- Add Expense Section -->
                         <div class="mb-4">
-                            <h2 class="h5 mb-3">Add Expense</h2>
+                           
+                            <div class="col-12 d-flex justify-content-between">
+                                <h2 class="h5 mb-3">Add Expense</h2>
+                                <a href="/chart.html" class="btn btn-danger w-30 h5 mb-3" id="expense-overview-btn" role="button">Expense Overview</a>
+                            </div>
                             <form id="expense-form">
                                 <div class="row g-2">
                                     <div class="col-12 col-md-6">
@@ -61,7 +65,7 @@
                                     <option value="dateDesc">Date (Desc)</option>
                                     <option value="amountAsc">Amount (Asc)</option>
                                     <option value="amountDesc">Amount (Desc)</option>
-                                    <!-- <option value="category">Category</option> -->
+                                    <option value="category">Category</option>
                                 </select>
                             </div>
                         </div>
@@ -133,6 +137,13 @@
         </div>
     </div>
 
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Expense Overview</h5>
+            <canvas id="expenseChart" width="400" height="100"></canvas>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="expense.js"></script>
 </body>
