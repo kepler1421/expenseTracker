@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalExpenses = document.getElementById("total-expenses");
     const editExpenseModal = new bootstrap.Modal(document.getElementById("editExpenseModal"));
     const editExpenseForm = document.getElementById("edit-expense-form");
+    const paginationButtons = document.getElementById("pagination-buttons");
 
-    // Load expenses from localStorage - ensure proper parsing
+    // Load expenses from localStorage 
     let expenses = [];
     try {
         const savedExpenses = localStorage.getItem("expenses");
@@ -20,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error loading expenses from localStorage:", error);
         expenses = [];
     }
+
+    let CurrentPage = 1;
+    let itemsPerPage = 5;
     
     updateExpenseList();
     
@@ -63,7 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
         expenseList.innerHTML = "";
         let total = 0;
 
-        expenses.forEach(expense => {
+        const totalPages = Math.ceil(expenses.length / itemsPerPage);
+        const currentPageExpenses = expenses.slice((CurrentPage - 1) * itemsPerPage, CurrentPage * itemsPerPage);
+
+
+        currentPageExpenses.forEach(expense => {
             total += expense.amount;
             const row = document.createElement("tr");
             row.innerHTML = `
@@ -89,8 +97,51 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         totalExpenses.textContent = `$${total.toFixed(2)}`;
+
+        updatePaginationButtons(totalPages);
+
     }
-    
+
+     // Update Pagination Buttons
+     function updatePaginationButtons(totalPages) {
+        paginationButtons.innerHTML = "";
+
+        // Add previous button
+        const previousButton = document.createElement("button");
+        previousButton.textContent = "Previous";
+        previousButton.disabled = CurrentPage === 1;
+        previousButton.addEventListener("click", function() {
+            CurrentPage--;
+            updateExpenseList();
+        });
+        paginationButtons.appendChild(previousButton);
+
+        // Add page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageNumberButton = document.createElement("button");
+            pageNumberButton.textContent = i;
+            pageNumberButton.classList.add("page-number-button");
+            if (i === CurrentPage) {
+                pageNumberButton.classList.add("active");
+            }
+            pageNumberButton.addEventListener("click", function() {
+                CurrentPage = i;
+                updateExpenseList();
+            });
+            paginationButtons.appendChild(pageNumberButton);
+        }
+
+         // Add next button
+         const nextButton = document.createElement("button");
+         nextButton.textContent = "Next";
+         nextButton.disabled = CurrentPage === totalPages;
+         nextButton.addEventListener("click", function() {
+             CurrentPage++;
+             updateExpenseList();
+         });
+         paginationButtons.appendChild(nextButton);
+     }
+
     // Delete Expense
     function deleteExpense(id) {
         expenses = expenses.filter(expense => expense.id !== id);
@@ -170,40 +221,7 @@ document.getElementById("sortBy").addEventListener("change", function () {
 });
 
 
-// Create a bar chart
-const ctx = document.getElementById('expenseChart').getContext('2d');
-const chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: expenses.map(expense => expense.name),
-        datasets: [{
-            label: 'Expenses',
-            data: expenses.map(expense => expense.amount),
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+document.getElementById("open-overview").addEventListener("click", function() {
+    window.location.href = "expense.html";
 });
 });
