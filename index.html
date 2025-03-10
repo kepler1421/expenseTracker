@@ -24,7 +24,7 @@
                            
                             <div class="col-12 d-flex justify-content-between">
                                 <h2 class="h5 mb-3">Add Expense</h2>
-                                <button id="open-overview" class="btn btn-danger btn-sm h5">Expense Overview</button>
+                               
                             </div>
                             <form id="expense-form">
                                 <div class="row g-2">
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-4">
                                 <input type="date" id="startDate" class="form-control" onchange="filterExpenses()">
-                                <!-- <input type="date" id="endDate" class="form-control mt-2" onchange="filterExpenses()"> -->
+                            
                             </div>
                             <div class="col-md-4">
                                 <select id="sortBy" class="form-select" onchange="sortExpenses()">
@@ -102,16 +102,16 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="main d-flex ">
                     <div id="pagination-buttons"></div>
+                    <button id="open-overview" class="btn btn-danger btn-sm h5">Expense Overview</button>
+                </div>
                  
                 </div>
             </div>
         </div>
     </div>
     
-        
-
 
      <!-- Edit Expense Modal -->
      <div class="modal fade" id="editExpenseModal" tabindex="-1">
