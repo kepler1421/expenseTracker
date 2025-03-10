@@ -1,0 +1,74 @@
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f8fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.main-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.btn.toggle-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn.toggle-btn:not(.active) {
+  background-color: #6c757d;
+  color: white;
+}
+
+.chart-container {
+  height: 350px;
+  margin: 30px 0;
+}
+
+.summary-row {
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  height: 100%;
+}
+
+.filter-section {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.add-expense-btn-container {
+  margin: 20px 0;
+}
+
+.sort-icon {
+  cursor: pointer;
+}
+
+.sort-active {
+  color: #007bff;
+}
+
+.table th {
+  position: relative;
+}
+
+.no-expenses {
+  padding: 30px;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  margin: 20px 0;
+}
