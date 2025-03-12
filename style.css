@@ -1,10 +1,14 @@
 
 
 body {
-    background-color: #f4f4f9;
+    background-color: #f4f4f9   ;
 }
 
 .main {
     justify-content: space-between;
     padding: 0 15px 0 15px;
+}
+
+.hidden {
+    display: none;
 }
