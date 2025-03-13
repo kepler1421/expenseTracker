@@ -16,17 +16,22 @@
         <div class="row">
             <div class="col-12">
                 <div class="card shadow-sm">
+                    <div class="main d-flex justify-content-end p-2">
+                        <button class="btn main2 btn-danger  h5"><a href="login.html">LogOut</a></button>
+                    </div>
                     <div class="card-header bg-primary text-white text-center">
                         <h1 class="h3 mb-0">Expense Tracker</h1>
                     </div>
 
                     <div class="card-body">
-                        <!-- Add Expense Button to Open Modal -->
-                        <div class="mb-4 justify-content-between">
+                        <div class="mb-4 d-flex gap-2 ">
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#addExpenseModal">
                                 Add New Expense
                             </button>
+                            
+                                <button id="open-overview" class="btn btn-danger">Expense Overview</button>
+                            
                         </div>
 
                         <!-- Filter & Search Section -->
@@ -104,7 +109,6 @@
                     </div>
                     <div class="main d-flex justify-content-between p-2">
                         <div id="pagination-buttons"></div>
-                        <button id="open-overview" class="btn btn-danger btn-sm h5">Expense Overview</button>
                     </div>
                 </div>
             </div>
