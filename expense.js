@@ -89,13 +89,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateExpenseList(expensesList = expenses) {
       
       
-      if (expenses.length === 0) {
-          const noExpenses = document.createElement("div");
-          noExpenses.textContent = "No expenses added yet.";
-          noExpenses.classList.add("alert", "alert-info", "text-center");
-          expenseList.appendChild(noExpenses);
-          return;
-      }
+    //   if (expenses.length === 0) {
+    //       const noExpenses = document.createElement("div");
+    //       noExpenses.textContent = "No expenses added yet.";
+    //       noExpenses.classList.add("alert", "alert-info", "text-center");
+    //       expenseList.appendChild(noExpenses);
+    //       return;
+    //   }
 
       if (!Array.isArray(expensesList)) {
           console.error("Invalid expenses data. Cannot update expense list.");
@@ -275,16 +275,12 @@ document.addEventListener("DOMContentLoaded", function () {
       updateExpenseList(filteredExpenses);
   }
 
-  // Add event listener to search input field
   document.getElementById("search-expenses").addEventListener("input", filterExpenses);
 
-  // Add event listener to filter dropdown
   document.getElementById("filterCategory").addEventListener("change", filterExpenses);
 
-  // Add event listener to date from input field
   document.getElementById("date-from").addEventListener("input", filterExpenses);
 
-  // Add event listener to date to input field
   document.getElementById("date-to").addEventListener("input", filterExpenses);
 
   // Filtering and Sorting
@@ -307,6 +303,21 @@ document.addEventListener("DOMContentLoaded", function () {
       saveExpenses();
       updateExpenseList();
   });
+
+  // Get category badge color
+function getCategoryBadgeColor(category) {
+    const categoryColors = {
+      'Food': 'info',
+      'Transportation': 'warning',
+      'Housing': 'primary',
+      'Utilities': 'secondary',
+      'Entertainment': 'success',
+      'Healthcare': 'danger',
+      'Other': 'dark'
+    };
+    
+    return categoryColors[category] || 'light';
+  }
 
   document
       .getElementById("open-overview")
