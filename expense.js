@@ -87,15 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update Expense List
   function updateExpenseList(expensesList = expenses) {
-      
-      
-    //   if (expenses.length === 0) {
-    //       const noExpenses = document.createElement("div");
-    //       noExpenses.textContent = "No expenses added yet.";
-    //       noExpenses.classList.add("alert", "alert-info", "text-center");
-    //       expenseList.appendChild(noExpenses);
-    //       return;
-    //   }
 
       if (!Array.isArray(expensesList)) {
           console.error("Invalid expenses data. Cannot update expense list.");
@@ -308,15 +299,13 @@ document.addEventListener("DOMContentLoaded", function () {
 function getCategoryBadgeColor(category) {
     const categoryColors = {
       'Food': 'info',
-      'Transportation': 'warning',
-      'Housing': 'primary',
-      'Utilities': 'secondary',
-      'Entertainment': 'success',
-      'Healthcare': 'danger',
-      'Other': 'dark'
+      'Travel': 'warning',
+      'Shopping': 'primary',
+      'Bills': 'secondary',
+      'Entertainment': 'success'
     };
     
-    return categoryColors[category] || 'light';
+    return categoryColors[category] || 'info';
   }
 
   document
