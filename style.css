@@ -1,11 +1,27 @@
 
 
 body {
-    background-color: #f4f4f9;
+    background-color: #f4f4f9   ;
 }
 
 .main {
     justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0 15px 0 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.main2 a{
+    display: flex;
+    color: white;
+    text-decoration: none;
+    justify-content: right;
+}
+
+#pagination-buttons{
+    margin: 0 auto;
+    border-radius: 10px;
 }
